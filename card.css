@@ -1,0 +1,44 @@
+#message > hard {
+  background: #198754;
+  border-radius: 2rem;
+  color: #fff;
+  max-width: 30%;
+  margin-left: auto;
+  text-align: start;
+  padding: 0.5rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+}
+
+#message > span {
+  background: #1d1d27;
+  border-radius: 2rem;
+  color: #fff;
+  max-width: 30%;
+  margin-right: auto;
+  text-align: start;
+  padding: 0.5rem;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+}
+
+.btn-success {
+  background: #198754 !important;
+  border-radius: 2rem !important;
+  color: #fff;
+}
+
+.THEBOAX > .card {
+  width: 300px !important;
+  height: 200px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black !important;
+  transition: 100ms;
+}
+.THEBOAX > .card:hover,
+.THEBOAX .card:focus-visible {
+  background-color: #1d1d27 !important;
+}/*# sourceMappingURL=card.css.map */
