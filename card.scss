@@ -21,7 +21,13 @@
 	padding-left: 1.3rem;
 	padding-right: 1.3rem;
 }
-
+#message {
+	overflow-y: auto;
+	border-radius: 0px;
+	&>:last-child {
+			margin-bottom: 32px;
+		}
+}
 .btn-success {
 	background: #198754 !important;
 	border-radius: 2rem !important;

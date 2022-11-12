@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import { getFirestore, getDocs, addDoc, collection, orderBy, query } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+import { getFirestore, getDocs, addDoc, collection, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
 
 
 const firebaseConfig = {
@@ -14,7 +14,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const userID = document.getElementById('user').value;
 const paragraph = document.getElementById("message");
-
+let arr = [];
+let i=0;
 
 document.getElementById("form").onsubmit = async function (e) {
     
@@ -28,26 +29,36 @@ document.getElementById("form").onsubmit = async function (e) {
         msg: msg,
         time: currentdate
     });
-    // console.log("Document written with ID: ", docRef.id);
+    console.log("Document written with ID: ", docRef.id);
     loadmyself();
 }
-// .orderBy("time").get()
-// const _ = require("lodash"); 
 const loadmyself = async function () {
     const querySnapshot = await getDocs(collection(db, "chaty"));
-    paragraph.innerHTML = " ";
-    // querySnapshot.orderBy("time", "asc");
-    // let gfg = _.orderBy(querySnapshot, ['time'], ['asc']);
+    arr = [];
+    i = 0;
     querySnapshot.forEach((doc) => {
-        var data = doc.data().msg;
-        if (doc.data().user == userID) {
+        // console.table(doc.data());
+        arr[i++] = doc.data();
+    });
+    displayArr();
+}
+
+function displayArr (){
+    arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));
+    paragraph.innerHTML = " ";
+    arr.forEach(value=>{
+        var data = value.msg;
+        if (value.user === userID) {
             paragraph.innerHTML += "<hard>" + data + "</hard>";
         }
         else {
             paragraph.innerHTML += "<span>" + data + "</span>";
         }
-    });
+    })
 }
+
+
+
 const intervals = setInterval(async function () {
    await loadmyself();
 }, 5000);
@@ -57,7 +68,27 @@ window.onload = async function () {
 
 
 
+// const snapshot = await db.collection('chaty').orderBy('time').get();
+    // const q = query(snapshot, orderBy("time"), limit(3));
+    // querySnapshot.orderBy('time','asc');
+    // .orderBy('releaseDate', 'asc');
+    // console.table(querySnapshot)
+
+// const endAtRes = await db.collection('cities')
+//   .orderBy('population')
+//   .endAt(1000000)
+//   .get();
+
+
+    // orderBy('timestamp').
+    
    // const starter = getDocs(collection(db,'chaty'));
     //  const  querySnapshot = await starter.orderBy('time', 'asc').get();
     // const querySnapshot = query(collection(db, "chaty"),orderBy('time', "asc"))
     // let querySnapshot = await getDocs(query("chaty", orderBy('timestamp')));
+
+    // querySnapshot.orderBy("time", "asc");
+    // let gfg = _.orderBy(querySnapshot, ['time'], ['asc']);
+    
+// .orderBy("time").get()
+// const _ = require("lodash"); 
