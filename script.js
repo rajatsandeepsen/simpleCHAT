@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-import { getFirestore, getDocs, addDoc, collection, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+import { getFirestore, getDocs, addDoc, collection, query, orderBy, limit,batch } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
 
 
 const firebaseConfig = {
@@ -41,7 +41,17 @@ const loadmyself = async function () {
         arr[i++] = doc.data();
     });
     displayArr();
+    paragraph.scrollTop = paragraph.scrollHeight;
 }
+
+// document.getElementById("deleteAll").onclick = async function (e) {
+//     const querySnapshot = await getDocs(collection(db, "chaty"));
+//     const batch = db.batch();
+//     querySnapshot.docs.forEach((doc) => {
+//         batch.delete(doc.ref);
+//     });
+//   await batch.commit();
+// }
 
 function displayArr (){
     arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));

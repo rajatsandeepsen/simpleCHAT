@@ -17,13 +17,14 @@
         <div class="card-header bg-dark d-flex gap-3 align-items-center text-white rounded-0">
             <i class="bi bi-person-circle fs-1"></i>
             <h2 class="m-0">User1</h2>
+            <button id="deleteAll" class="btn ms-auto text-white"><i class="bi bi-three-dots-vertical"></i></button>
         </div>
         <div id="message" class="card-body flex-grow-1 py-3 d-flex flex-column gap-1">
         </div>
             <form class="w-100 card-footer d-flex w-100 gap-2 bg-dark rounded-0" id="form">
                 <input type="hidden" id="user" name="user" value="2">
                 <input class="w-100 btn btn-light text-start rounded-5" id="msg" name="name" type="text" minlength="1"
-                    maxlength="80" class="" placeholder="message">
+                    maxlength="80" class="" placeholder="message" required>
             
                 <button id="sentbutton" type="submit" class="btn btn-success">
                     <i class="bi bi-send"></i>
