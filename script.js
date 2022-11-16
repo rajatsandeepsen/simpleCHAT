@@ -2,9 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebas
 import { getFirestore, getDocs, addDoc, collection, query, orderBy, limit} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
 
 function getCurrentTimestamp () {
-
   return Date.now()
-
 }
 
 const firebaseConfig = {
@@ -60,11 +58,8 @@ const loadmyself = async function () {
 
 function displayArr (){
     var sortedDesc = arr.sort(
-
-  (objA, objB) => Number(objA.time) - Number(objB.time),
-
-);
-    sortedDesc.reverse();
+      (objA, objB) => Number(objA.time) - Number(objB.time),);
+     //sortedDesc.reverse();
     //arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));
     paragraph.innerHTML = " ";
     sortedDesc.forEach(value=>{
@@ -77,39 +72,9 @@ function displayArr (){
         }
     })
 }
-
-
-
 const intervals = setInterval(async function () {
    await loadmyself();
 }, 5000);
 window.onload = async function () {
     await loadmyself();
 }
-
-
-
-// const snapshot = await db.collection('chaty').orderBy('time').get();
-    // const q = query(snapshot, orderBy("time"), limit(3));
-    // querySnapshot.orderBy('time','asc');
-    // .orderBy('releaseDate', 'asc');
-    // console.table(querySnapshot)
-
-// const endAtRes = await db.collection('cities')
-//   .orderBy('population')
-//   .endAt(1000000)
-//   .get();
-
-
-    // orderBy('timestamp').
-    
-   // const starter = getDocs(collection(db,'chaty'));
-    //  const  querySnapshot = await starter.orderBy('time', 'asc').get();
-    // const querySnapshot = query(collection(db, "chaty"),orderBy('time', "asc"))
-    // let querySnapshot = await getDocs(query("chaty", orderBy('timestamp')));
-
-    // querySnapshot.orderBy("time", "asc");
-    // let gfg = _.orderBy(querySnapshot, ['time'], ['asc']);
-    
-// .orderBy("time").get()
-// const _ = require("lodash"); 
