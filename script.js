@@ -59,7 +59,7 @@ const loadmyself = async function () {
 // }
 
 function displayArr (){
-    const sortedDesc = arr.sort(
+    var sortedDesc = arr.sort(
 
   (objA, objB) => Number(objA.time) - Number(objB.time),
 
