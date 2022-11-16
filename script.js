@@ -56,7 +56,7 @@ const loadmyself = async function () {
 function displayArr (){
     const sortedDesc = arr.sort(
 
-  (objA, objB) => Number(objB.date) - Number(objA.date),
+  (objA, objB) => Number(objB.time) - Number(objA.time),
 
 );
     //arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));
