@@ -54,9 +54,14 @@ const loadmyself = async function () {
 // }
 
 function displayArr (){
-    arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));
+    const sortedDesc = arr.sort(
+
+  (objA, objB) => Number(objB.date) - Number(objA.date),
+
+);
+    //arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));
     paragraph.innerHTML = " ";
-    arr.forEach(value=>{
+    sortedDesc.forEach(value=>{
         var data = value.msg;
         if (value.user === userID) {
             paragraph.innerHTML += "<hard>" + data + "</hard>";
