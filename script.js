@@ -63,7 +63,7 @@ function displayArr (){
 
   (objA, objB) => Number(objA.time) - Number(objB.time),
 
-);
+).reverse();
     //arr.sort((a,b) => (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0));
     paragraph.innerHTML = " ";
     sortedDesc.forEach(value=>{
