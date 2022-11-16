@@ -1,6 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 import { getFirestore, getDocs, addDoc, collection, query, orderBy, limit} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
 
+function getCurrentTimestamp () {
+
+  return Date.now()
+
+}
 
 const firebaseConfig = {
     apiKey: "AIzaSyCfvhRy9HTtWjqPSKY9ik6ctTxdh4N3ri8",
@@ -22,8 +27,8 @@ document.getElementById("form").onsubmit = async function (e) {
     e.preventDefault();
     const msg = document.getElementById("msg").value;
     document.getElementById('msg').value = " ";
-    var currentdate = new Date().toLocaleString();
-
+    //var currentdate = new Date().toLocaleString();
+ var currentdate= getCurrentTimestamp();
     const docRef = await addDoc(collection(db, "chaty"), {
         user: document.getElementById('user').value,
         msg: msg,
